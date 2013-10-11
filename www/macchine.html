@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+		
+		<link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
+        <link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/jquery.jqplot.css" />
+        <link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/themes/custom-theme.min.css" />
+        <style>.ui-dialog .ui-header .ui-btn-icon-notext { display:none;} </style>
+        <link rel="stylesheet" type="text/css" href="css/macchine.css" />
+
+		<script type="text/javascript" src="phonegap.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+        <script type="text/javascript" src="js/macchine.js"></script>
+		<script src="jquery.mobile-1.3.2/jquery-1.10.2.min.js"></script>
+		<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
+        <script type="text/javascript" src="jquery.mobile-1.3.2/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="jquery.mobile-1.3.2/plugins/jqplot.meterGaugeRenderer.min.js"></script>
+        <style>
+            /* hardware acceleration for smoother transitions on WebKit browsers */
+            .ui-panel-animate.ui-panel:not(.ui-panel-display-reveal),
+            .ui-panel-animate.ui-panel:not(.ui-panel-display-reveal) > div,
+            .ui-panel-animate.ui-panel-closed.ui-panel-display-reveal > div,
+            .ui-panel-animate.ui-panel-content-wrap,
+            .ui-panel-animate.ui-panel-content-fixed-toolbar {
+              -webkit-backface-visibility: visible;
+              -webkit-transform: none;
+            }
+          </style>
+        <script  type="text/javascript">
+
+
+            // A $( document ).ready() block.
+            $(document).ready(function () {
+                initMacchine();
+            });
+
+		</script>
+		 <title>Macchine</title>	
+    </head>
+    <body>
+        <div data-role="page" id="one" data-theme="f">
+		
+			<div data-role="panel" data-display="overlay" data-position-fixed="false" data-theme="a" id="nav-panel" >
+				<ul id="MenuPanel" data-role="listview" data-theme="a" class="nav-search">
+				</ul>
+			</div><!-- /panel -->	
+            	
+			<div data-role="popup" id="popup2" data-position-to="origin " class="tastoCentrato"  ></div><!-- /page popup -->
+
+			<!-- start header -->
+			<div data-role="header" data-nobackbtn="true" data-position="fixed">
+				<a id="TastoMenu" href="#nav-panel" data-icon="bars" >Isole</a>
+				<h1 >MACCHINE</h1>
+				<a onclick="DoLogout();" class="ui-btn-right">Logout</a>
+			</div>
+			<!-- end header -->
+			<div data-role="content">	
+                <table id="TitoliMacchine" style="width:100%">
+                    <tr>
+                        <td style="width:4%"><h1>REPARTO:</h1></td>
+                        <td style="width:80%"><h1 id="NomeReparto"> </h1></td>
+                    </tr>
+                    <tr>
+                        <td><h1>ISOLA:</h1></td>
+                        <td><h1 id="NomeIsola"> </h1></td>
+                    </tr>
+                </table>
+                <div id="machineList" data-theme="f">
+                    <ul  id="machineListul" data-role="listview" data-inset="true" data-filter="true"></ul>
+                    <!-- lista macchine -->
+                </div>
+				
+
+			</div><!-- /content -->
+            <div data-role="footer" class="ui-bar" data-position="fixed">
+                <div data-role="controlgroup" data-type="horizontal">
+                    <a data-role="button" id="A1" onclick="ShowLoadingOK();doRedirectLocale('reparti.html');" data-icon="back">Indietro</a>
+					<a data-role="button" onclick="ShowLoadingOK();location.reload(true);" data-icon="refresh">Refresh</a>
+                    <a data-role="button" onclick="ShowExitConfirm();" data-icon="delete">Esci</a>
+                    <div id="MexOffline"></div>
+                </div>          
+        </div>
+            
+		 </div><!-- /page two dettaglio -->
+	     <div data-role="page" id="Dettaglio">
+			<!-- start header -->
+			<div data-role="header" data-nobackbtn="true" data-position="fixed">
+				<h1 id="titoloInfo">DETTAGLIO MACCHINA</h1>
+				<a onclick="DoLogout();" class="ui-btn-right">Logout</a>
+			</div>
+			<!-- end header -->
+			<div data-role="content" id="SpazioDettaglio" class="TextCenter">	
+                <table style="width:100%;"class="TextCenter">
+                    <tr>
+                        <td  style="text-align:right;width:20%"></td>
+                        <td class="TextCenter" style="text-align:center;width:60%"><h2 id="nomeMaccInfo"></h2><h3 id="nomeIPInfo"></h3></td>
+                        <td  style="text-align:right;width:20%"><img src="" id="ImageStatus"/></td>
+                        
+                    </tr>
+
+
+                </table>
+                <p id="nomeOrder"></p>
+                <p id="nomeStatus"></p>
+                <p id="nomeItem"></p>
+                <p id="nomeOperatore"></p>
+                <p id="nomePiecesCounter"></p>
+                <p id="nomeScarti"></p>
+                <p id="nomeLavMac"></p>
+                <p id="nomePiazz"></p>
+                <p id="nomeFermo"></p>
+                <p id="nomeCPrev"></p>
+				<div style="width:100%" class="TextCenter">
+					<div style="width:50% margin-left: auto ;  margin-right: auto ;" class="TextCenter">
+						
+							<a href="#" onclick="ShowLoadingOK();doRedirectLocale('macchine.html');" data-rel="back" data-role="button" data-inline="true" data-icon="back">Indietro</a>
+							
+					</div>
+				</div> 
+			</div><!-- /content -->
+            <div data-role="footer" class="ui-bar" data-position="fixed">
+                <div data-role="controlgroup" data-type="horizontal">
+                    <a data-role="button" onclick="ShowLoadingOK();doRedirectLocale('macchine.html');" data-icon="back">Indietro</a>
+					<a data-role="button" onclick="ShowLoadingOK();GetServerDate('macchine_false');" data-icon="refresh">Refresh</a>
+                    <a data-role="button" onclick="ShowExitConfirm();" data-icon="delete">Esci</a>
+                    <div id="Div5"></div>
+                </div>          
+        </div>
+            
+		 </div><!-- /page one -->
+    </body>
+</html>
