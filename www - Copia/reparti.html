@@ -44,7 +44,7 @@
     <body>
         <div data-role="page" id="one"  data-theme="g">
 			<!-- start header -->
-			<div data-role="header" data-nobackbtn="true" class="HeadFootClass">
+			<div data-role="header" data-nobackbtn="true">
 				<h1>REPARTI</h1>
 				<a onclick="DoLogout();" class="ui-btn-right">Logout</a>
 			</div>
@@ -57,7 +57,7 @@
                 <p><a onclick="ShowLoadingOK();doRedirectLocale('repartiCb.html');" data-role="button" style="text-align:left;" data-theme="c" >AGGIUNGI/MODIFICA ISOLA PERSONALIZZATA</a></p>
 				
 			</div><!-- /content -->
-            <div data-role="footer" class="ui-bar HeadFootClass" data-position="fixed" >
+            <div data-role="footer" class="ui-bar" data-position="fixed">
                 <div data-role="controlgroup" data-type="horizontal">
                     <a data-role="button" onclick="ShowLoadingOK();location.reload(true);" data-icon="refresh">Refresh</a>
                     <a data-role="button" onclick="ShowExitConfirm();" data-icon="delete ">Esci</a>

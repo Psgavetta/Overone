@@ -26,7 +26,7 @@
     <body>
         <div data-role="page" id="one">
 			<!-- start header -->
-			<div data-role="header" data-nobackbtn="true" class="HeadFootClass">
+			<div data-role="header" data-nobackbtn="true">
 				<h1>Overone</h1>
 				<a href="#login" onclick="ShowLoadingOK();" data-rel="dialog" class="ui-btn-right">Login</a>
 			</div>
@@ -37,14 +37,11 @@
 			
                 <div id="allRepos"></div>
 			</div><!-- /content -->
-             <div data-role="footer" class="ui-bar HeadFootClass" data-position="fixed" >
-                <div id="MexOffline"></div>
-            </div>
 		 </div><!-- /page one -->
 
         <div data-role="page" id="login">
 			<!-- start header -->
-		    <div data-role="header" data-nobackbtn="true" class="HeadFootClass">	
+		    <div data-role="header" data-nobackbtn="false">	
 			    <h1>Login</h1>
 		    </div>
 			    <!-- end header -->
@@ -59,7 +56,6 @@
 		        <p><a onclick="ShowLoadingOK();SendLoginRequest(); " data-role="button" data-theme="b">Invia</a></p>
 		    </div>
 		    <!-- end content -->
-           
 		 </div><!-- /page one -->
     </body>
 </html>

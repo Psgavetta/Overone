@@ -20,30 +20,6 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#73D05D;
-    background-image:linear-gradient(top, #1C3716 0%, #73D05D 51%);
-    background-image:-webkit-linear-gradient(top, #1C3716 0%, #73D05D 51%);
-    background-image:-ms-linear-gradient(top, #1C3716 0%, #73D05D 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #1C3716),
-        color-stop(0.51, #73D05D)
-    );
-    background-attachment:fixed;
-    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-    font-size:12px;
-    height:100%;
-    margin:0px;
-    padding:0px;
-    text-transform:uppercase;
-    width:100%;
-}
 
 /* Portrait layout (default) */
 .app {
@@ -185,19 +161,249 @@ margin-top:15px;
     margin-right:10px;
 }
 
-.jqplot-series-shadowCanvas {
-   /* background-color:red;*/
-	background-image:url('../img/macchina.png');
 
-	background-repeat: no-repeat; 
-	background-position: center center;
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+
+        .tastoCentratoPopup {
+            margin: 0 auto;
+            text-align:center;
+
+        }
+
+
+        .Grafico{
+           width:750px;
+           height:367px;
+           text-align:center;
+           margin: 0 auto;
+
+        }
+
+		body {
+			-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+			-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+			-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+			background-color:#73D05D;
+			background-image:linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-ms-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-gradient(
+				linear,
+				left top,
+				left bottom,
+				color-stop(0, #1C3716),
+				color-stop(0.51, #73D05D)
+			);
+			background-attachment:fixed;
+			font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+			font-size:17px;
+			height:100%;
+			margin:0px;
+			padding:0px;
+			text-transform:uppercase;
+			width:100%;
+		}
+
+		.jqplot-series-shadowCanvas {
+           /* background-color:red;*/
+	        background-image:url('../img/macchina_1024.png');
+
+	        background-repeat: no-repeat; 
+	        background-position: center center;
+        }
+
+        .jqplot-series-canvas {
+	        opacity:0.8;
+	        filter:alpha(opacity=80); /* For IE8 and earlier */
+        }
+}
+@media screen and (min-width: 1100px)  {
+
+        .tastoCentratoPopup {
+            margin: 0 auto;
+            text-align:center;
+        }
+
+
+        .Grafico{
+           width:900px;
+           height:450px;
+           text-align:center;
+           margin: 0 auto;
+
+        }
+		
+		body {
+			-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+			-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+			-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+			background-color:#73D05D;
+			background-image:linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-ms-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-gradient(
+				linear,
+				left top,
+				left bottom,
+				color-stop(0, #1C3716),
+				color-stop(0.51, #73D05D)
+			);
+			background-attachment:fixed;
+			font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+			font-size:20px;
+			height:100%;
+			margin:0px;
+			padding:0px;
+			text-transform:uppercase;
+			width:100%;
+		}
+        .jqplot-series-shadowCanvas {
+           /* background-color:red;*/
+	        background-image:url('../img/macchina_MAX.png');
+
+	        background-repeat: no-repeat; 
+	        background-position: center center;
+        }
+
+        .jqplot-series-canvas {
+	        opacity:0.8;
+	        filter:alpha(opacity=80); /* For IE8 and earlier */
+        }
+        .HeadFootClass {
+        height:85px;
+        font-size: 20px;
+        line-height: 60px; /* verticale */
+    }
+
+     .HeadFootClass h1.ui-title{
+        font-size: 50px;
+        margin:10px;
+    }
+    .ui-btn-text {
+        font-size: 20px;
+    }
+}
+@media screen and  (max-width: 550px) {
+
+        .tastoCentratoPopup {
+            margin: 0 auto;
+            text-align:center;
+
+        }
+
+
+        #chart4{
+           width:300px;
+           height:150px;
+           text-align:center;
+           margin: 0 auto;
+
+        }
+
+		body {
+			-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+			-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+			-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+			background-color:#73D05D;
+			background-image:linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-ms-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-gradient(
+				linear,
+				left top,
+				left bottom,
+				color-stop(0, #1C3716),
+				color-stop(0.51, #73D05D)
+			);
+			background-attachment:fixed;
+			font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+			font-size:12px;
+			height:100%;
+			margin:0px;
+			padding:0px;
+			text-transform:uppercase;
+			width:100%;
+		}
+		
+		.jqplot-series-shadowCanvas {
+           /* background-color:red;*/
+	        background-image:url('../img/macchina_400.png');
+	        background-repeat: no-repeat; 
+	        background-position: center center;
+        }
+
+        .jqplot-series-canvas {
+	        opacity:0.8;
+	        filter:alpha(opacity=80); /* For IE8 and earlier */
+        }
+
+        .ui-btn { height: 50px; font-size: 12px; }
+
+        /*
+		.ui-btn-inner{
+            text-overflow: initial; 
+            padding-left: 5px; 
+        }
+*/
+        .ui-btn-text {
+            font-size: 12px; 
+        }
+
+}
+@media screen and (min-width: 550px) and (max-width: 900px) {
+
+        .tastoCentratoPopup {
+            margin: 0 auto;
+            text-align:center;
+
+        }
+
+
+        .Grafico{
+           width:500px;
+           height:250px;
+		   
+           text-align:center;
+           margin: 0 auto;
+
+        }
+
+		body {
+			-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+			-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+			-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+			background-color:#73D05D;
+			background-image:linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-ms-linear-gradient(top, #1C3716 0%, #73D05D 51%);
+			background-image:-webkit-gradient(
+				linear,
+				left top,
+				left bottom,
+				color-stop(0, #1C3716),
+				color-stop(0.51, #73D05D)
+			);
+			background-attachment:fixed;
+			font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+			font-size:15px;
+			height:100%;
+			margin:0px;
+			padding:0px;
+			text-transform:uppercase;
+			width:100%;
+		}
+
+		.jqplot-series-shadowCanvas {
+           /* background-color:red;*/
+	        background-image:url('../img/macchina.png');
+
+	        background-repeat: no-repeat; 
+	        background-position: center center;
+        }
+
+        .jqplot-series-canvas {
+	        opacity:0.8;
+	        filter:alpha(opacity=80); /* For IE8 and earlier */
+        }
 }
 
-.jqplot-series-canvas {
-	opacity:0.8;
-	filter:alpha(opacity=80); /* For IE8 and earlier */
-}
-
-#Dettaglio{
-	font-size:14px;
-}

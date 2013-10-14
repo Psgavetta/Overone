@@ -1,6 +1,6 @@
 function ForSwipe() {
 
-    $(document).on('swiperight', '[id="one"]', function (event) {
+    $(document).on('swiperight', '[data-role="page"]', function (event) {
         if (event.handled !== true) // This will prevent event triggering more then once
         {
             /*var nextpage = $(this).next('[data-role="page"]');
@@ -18,7 +18,7 @@ function ForSwipe() {
 
 function ForSwipePopup() {
 
-    $(document).on('swipeleft', '[id="Cruscotto"]', function (event) {
+    $(document).on('swipeleft', '[data-role="popup"]', function (event) {
         if (event.handled !== true) // This will prevent event triggering more then once
         {
             /*var nextpage = $(this).next('[data-role="page"]');
@@ -92,7 +92,7 @@ function doOnOrientationChange() {
             alert('portrait');
             break;
     }*/
-    if ($.mobile.activePage.attr('id') == "Cruscotto") {
+    if ($.mobile.activePage.find("#popup2").is(":visible")) {
         // Do something here if the popup is open
         // alert("ok");
         OpenPopup(StoreLocally_get('PopupView', false), true);
@@ -115,7 +115,6 @@ function DoInitMacchine(){
     $.event.special.swipe.horizontalDistanceThreshold = 20;
     //console.log($.event.special.swipe.horizontalDistanceThreshold);
     window.addEventListener('orientationchange', doOnOrientationChange);
-    
     StoreLocally('changeInfoMac', 'no', false);
     //alert('Deviceready');
     // HttpRequest();
@@ -132,21 +131,6 @@ function DoInitMacchine(){
             alert("Attenzione. Connessione assente.");
         }
     }
-
-
-    $(document).on('pageshow', '[id="Cruscotto"]', function (event) {
-        if (event.handled !== true) // This will prevent event triggering more then once
-        {
-            $('#CruscottoContent').html(markup);
-            DoGraph(StoreLocally_get('PopupView', false));
-            $('#CruscottoContent').closest(":jqmData(role='page')").trigger('create');
-            
-            
-            //alert("OK");
-        }
-        return false;
-    });
-
 
 }
 
@@ -472,7 +456,7 @@ function HttpRequestRefresh(FisrtTime) {
 
 
 
-                                if ($.mobile.activePage.attr('id') == "Cruscotto") {
+                                if ($.mobile.activePage.find("#popup2").is(":visible")) {
                                     // Do something here if the popup is open
                                    // alert("ok");
                                     OpenPopup( StoreLocally_get('PopupView',false) , true);
@@ -543,7 +527,7 @@ function OpenPopup(content,OnlyRefresh) {
     //markup += "<h3>" + items[content].MachineIP + "</h3>";
     markup = "<p><div class=\"ui-grid-a\" style=\"text-align: center;\" ><div class=\"ui-block-a\"><h3><b>" + items[content].MachineName + "</b></h3></div>";
     markup += "<div class=\"ui-block-b\"><h3><b>" + items[content].MachineIP + "</b></h3></div></div>";
-    markup += "<div id=\"chart4\" class=\"Grafico\" ></div></p>";
+    markup += "<div id=\"chart4\" class=\"plot\" style=\"width:350px;height:220px;text-align:center;margin: 0 auto; \"></div></p>";
     markup += "<p><b>" + items[content].MachineName + " - " + items[content].MachineIP + "</b></p>";
     markup += "<p>ARTICOLO: <b>" + items[content].Item + "</b></p>";
     markup += "<p>ORDINE: <b>" + items[content].Order + "</b></p>";
@@ -556,62 +540,43 @@ function OpenPopup(content,OnlyRefresh) {
     markup += "<p>Pieces Counter: " + items[content].PiecesCounter + "</p>";
     markup += "<p>Status: " + items[content].Status + "</p>";*/
     //markup += '<p><a href="#one"  data-rel="back" data-role="button" data-inline="true" data-icon="back">OK</a></p>';
-    if ($(window).width() >= 550)
-        markup += '<div data-role="controlgroup" data-type="horizontal" >';
-
-   
-    markup += '<a onclick="RedirectLocale(\'#one\');"  data-role="button"';
-    if ($(window).width() >= 550)
-        markup += 'data-inline="true"';
-    markup += 'data-icon="back">OK</a>';
-   /* markup += '<a onclick="ShowLoadingOK();location.reload(true);" data-role="button"';
-    if ($(window).width() >= 550)
-        markup += 'data-inline="true"';
-    markup += 'data-icon="refresh">Aggiorna</a>';*/
-    markup += '<a onclick="EffectSwipePopup();"   data-role="button"';
-	if ($(window).width() >= 550)
-	    markup += 'data-inline="true"';
-	markup += 'data-icon="info">Dettagli</a>';
-
-    if ($(window).width() >= 550)
-        markup += '</div>';
-
-   
+    markup += '<div data-role="controlgroup" data-type="horizontal" >';
+    markup += '<a onclick="$(\'#popup2\').popup(\'close\');"  data-role="button" data-inline="true" data-icon="back">OK</a>';
+	markup += '<a onclick="ShowLoadingOK();GetServerDate(\'macchine_false\');" data-role="button" data-inline="true" data-icon="refresh">Aggiorna</a>';
+    markup += '<a onclick="EffectSwipePopup();"   data-role="button" data-inline="true" data-icon="info">Dettagli</a>';
+	
+    markup += '</div>';
     if (OnlyRefresh)
         RefreshPopup(content);
     else
         SetPopup(content);
 }
 
-
-
 function SetPopup(content) {
     try {
-        //$('#CruscottoContent').html(markup).trigger("create");
-        
-        RedirectLocale('#Cruscotto');
-        
-        
-        //$('#Cruscotto').trigger("pagecreate");
+        $('#popup2').popup();
+        $('#popup2').html(markup).trigger("create");
+        $('#popup2').css('overflow-y', 'scroll');
+		$( '#popup2').popup({ theme: "d" });
+        //$('#popup2').css({ position: 'fixed', top: '0',left:'0px','display':'block',z-index:10000; });
+        //$('#popup2').css({ position: 'fixed', top: '0', left: '0px', 'display': 'block', 'z-index': 999999 });
+        $('#popup2').popup('open');
+        $('#popup2').popup({ positionTo: "window" });
         //ForSwipePopup();
-       
-        
-        
+        DoGraph(content);
     } catch (e) {
         alert("Errore: " + e);
     }
     ShowLoadingOFF();
 }
 
-
-
 function RefreshPopup(content) {
     try {
-        $('#CruscottoContent').html(markup);
-        DoGraph(StoreLocally_get('PopupView', false));
-        $('#CruscottoContent').closest(":jqmData(role='page')").trigger('create');
-        RedirectLocale('#Cruscotto');
-
+        $('#popup2').html(markup).trigger("create");
+        //$('#popup2').css("z-index", "999999");
+        $('#popup2').popup({ positionTo: "window" });
+        //ForSwipePopup();
+        DoGraph(content);
     } catch (e) {
         alert("Errore: " + e);
     }
@@ -656,23 +621,7 @@ function DoGraph(content) {
                 Backg = "#ADADAD";  //Grey
                 break;
         }//fine switch
-        var innerVal=140, OuterVal=150;
-        if ($(window).width() < 550) {
-            innerVal = 87;
-            OuterVal = 97;
-        }
-        else if ($(window).width() < 900) {
-            innerVal = 175;
-            OuterVal = 185;
-        }
-        else if ($(window).width() < 1100) {
-            innerVal = 280;
-            OuterVal = 290;
-        }
-        else {
-            innerVal = 350;
-            OuterVal = 360;
-        }
+
         plot4 = $.jqplot('chart4', [s1], {
             seriesDefaults: {
                 renderer: $.jqplot.MeterGaugeRenderer,
@@ -680,8 +629,8 @@ function DoGraph(content) {
                     background: Backg,
                     tickColor: '#000000',
                     ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-                    intervalOuterRadius: OuterVal,
-                    intervalInnerRadius: innerVal,
+                    intervalOuterRadius: 150,
+                    intervalInnerRadius: 140,
                     min: 0,
                     max: 100,
                     intervals: [20, 50, 100],
@@ -693,7 +642,7 @@ function DoGraph(content) {
         plot4.redraw();
 
     } catch (e) {
-        alert("ErroreGraph: " + e);
+        alert("Errore: " + e);
     }
 }
 
