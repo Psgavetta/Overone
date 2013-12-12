@@ -675,7 +675,7 @@ function DoGraph(content) {
             innerVal = 350;
             OuterVal = 360;
         }
-        /*plot4 = $.jqplot('chart4', [s1], {
+        plot4 = $.jqplot('chart4', [s1], {
             seriesDefaults: {
                 renderer: $.jqplot.MeterGaugeRenderer,
                 rendererOptions: {
@@ -690,20 +690,7 @@ function DoGraph(content) {
                     intervalColors: ['#cc6666', '#E7E658', '#66cc66']
                 }
             }
-        });*/
-		s1 = [322];
- 
-	   var plot3 = $.jqplot('chart4',[s1],{
-		   seriesDefaults: {
-			   renderer: $.jqplot.MeterGaugeRenderer,
-			   rendererOptions: {
-				   min: 100,
-				   max: 500,
-				   intervals:[200, 300, 400, 500],
-				   intervalColors:['#66cc66', '#93b75f', '#E7E658', '#cc6666']
-			   }
-		   }
-	   });
+        });
         //plot4.replot();
         //plot4.redraw();
 
