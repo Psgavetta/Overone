@@ -675,6 +675,10 @@ function DoGraph(content,first) {
             innerVal = 350;
             OuterVal = 360;
         }
+		if(plot4)
+		{
+			plot4.destroy();
+		}
 		$('.jqPlot').remove();
 		$('#plotContainer').append('<div id=\"chart4\" class=\"Grafico jqPlot\" ></div>');
 		   plot4 = $.jqplot('chart4', [s1], {
