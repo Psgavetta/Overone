@@ -624,9 +624,11 @@ function DoGraph(content) {
 
         var s1 = [0,1];
         var res;
+		var AppRes;
         try{
-            res = ((Number(items[content].TempoLavorazione)) / (Number(items[content].TempoLavorazione) + Number(items[content].TempoFermo)));
-            res *= 100;
+			AppRes=Number(items[content].TempoLavorazione) + Number(items[content].TempoFermo)
+            res = (Number(items[content].TempoLavorazione) / AppRes)*100;
+            //res *= 100;
             if (isNaN(res))
                 s1[0] = -1;
             else
@@ -635,7 +637,7 @@ function DoGraph(content) {
         }
         catch(err){
             s1[0] = -1;
-            console.log('NON Fatto');
+            alert("Errore calcolo Graph: " + err);
         }
 
         var Backg = "";
