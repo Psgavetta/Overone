@@ -1,4 +1,4 @@
-var FlagDebug = 1;
+var FlagDebug = 0;
 var FlagConsole = 0;
 
 
