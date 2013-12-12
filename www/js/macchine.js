@@ -675,6 +675,7 @@ function DoGraph(content) {
             innerVal = 350;
             OuterVal = 360;
         }
+		alert("width: "+$(window).width()+", s1: "+JSON.stringify(s1)+", innerVal: "+innerVal+", OuterVal: "+OuterVal+", Backg: "+Backg);
         plot4 = $.jqplot('chart4', [s1], {
             seriesDefaults: {
                 renderer: $.jqplot.MeterGaugeRenderer,
