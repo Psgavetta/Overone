@@ -95,7 +95,10 @@ function doOnOrientationChange() {
     if ($.mobile.activePage.attr('id') == "Cruscotto") {
         // Do something here if the popup is open
         // alert("ok");
-        OpenPopup(StoreLocally_get('PopupView', false), true);
+		
+		
+        //OpenPopup(StoreLocally_get('PopupView', false), true);
+		GetServerDate('macchine_false');
     }
 
 }
