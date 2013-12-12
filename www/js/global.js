@@ -174,7 +174,7 @@ function GetServerDate(afterCheck) {
                             console.log('Ricevuto' + OverOnePhoneConnection);
                         }
 
-                        if (TimePassedUntilNow(OverOnePhoneConnection) > '30') {    //30
+                        if (TimePassedUntilNow(OverOnePhoneConnection) > '300000') {    //30
                             alert("Attenzione. Il server non aggiorna i dati.");
                         }
                         else {

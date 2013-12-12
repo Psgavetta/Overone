@@ -172,7 +172,7 @@ function alertDismissed() {
     RedirectLocale('isole.html');
 }
 
-var items = [];
+var items = [],markup="";
 var dataData, dataData2;
 var dataIsle, dataIsle2, itemsIsole=[],itemsIsolePag;
 var dataDepartment, dataDepartment2, itemsDepartment;
@@ -622,7 +622,7 @@ function DoGraph(content) {
 
         
 
-        s1 = [0,1];
+        var s1 = [0,1];
         var res;
         try{
             res = ((Number(items[content].TempoLavorazione)) / (Number(items[content].TempoLavorazione) + Number(items[content].TempoFermo)));
