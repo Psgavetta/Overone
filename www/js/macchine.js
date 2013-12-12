@@ -691,8 +691,8 @@ function DoGraph(content) {
                 }
             }
         });
-        plot4.replot();
-        plot4.redraw();
+        //plot4.replot();
+        //plot4.redraw();
 
     } catch (e) {
         alert("ErroreGraph: " + e);
