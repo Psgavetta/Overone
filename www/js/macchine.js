@@ -155,7 +155,7 @@ var interval;
 function ReloadPageON() {
     interval = window.setInterval(function () {
         //location.reload(true);
-        GetServerDate('macchine_false');
+        GetServerDate('macchine_true');
     }, 30000);
 }
 function ReloadPageOFF() {
