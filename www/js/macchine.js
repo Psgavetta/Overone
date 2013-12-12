@@ -138,7 +138,7 @@ function DoInitMacchine(){
         if (event.handled !== true) // This will prevent event triggering more then once
         {
             $('#CruscottoContent').html(markup);
-            DoGraph(StoreLocally_get('PopupView', false));
+            DoGraph(StoreLocally_get('PopupView', false),true);
             $('#CruscottoContent').closest(":jqmData(role='page')").trigger('create');
             
             
@@ -155,7 +155,7 @@ var interval;
 function ReloadPageON() {
     interval = window.setInterval(function () {
         //location.reload(true);
-        GetServerDate('macchine_true');
+        GetServerDate('macchine_false');
     }, 30000);
 }
 function ReloadPageOFF() {
@@ -543,7 +543,7 @@ function OpenPopup(content,OnlyRefresh) {
     //markup += "<h3>" + items[content].MachineIP + "</h3>";
     markup = "<p><div class=\"ui-grid-a\" style=\"text-align: center;\" ><div class=\"ui-block-a\"><h3><b>" + items[content].MachineName + "</b></h3></div>";
     markup += "<div class=\"ui-block-b\"><h3><b>" + items[content].MachineIP + "</b></h3></div></div>";
-    markup += "<div id=\"chart4\" class=\"Grafico\" ></div></p>";
+    markup += "<div id=\"plotContainer\"><div id=\"chart4\" class=\"Grafico jqPlot\" ></div></div></p>";
     markup += "<p><b>" + items[content].MachineName + " - " + items[content].MachineIP + "</b></p>";
     markup += "<p>ARTICOLO: <b>" + items[content].Item + "</b></p>";
     markup += "<p>ORDINE: <b>" + items[content].Order + "</b></p>";
@@ -577,7 +577,7 @@ function OpenPopup(content,OnlyRefresh) {
         markup += '</div>';
 
    
-    if (OnlyRefresh)
+    if (OnlyRefresh==true)
         RefreshPopup(content);
     else
         SetPopup(content);
@@ -608,7 +608,7 @@ function SetPopup(content) {
 function RefreshPopup(content) {
     try {
         $('#CruscottoContent').html(markup);
-        DoGraph(StoreLocally_get('PopupView', false));
+        DoGraph(StoreLocally_get('PopupView', false),false);
         $('#CruscottoContent').closest(":jqmData(role='page')").trigger('create');
         RedirectLocale('#Cruscotto');
 
@@ -616,8 +616,8 @@ function RefreshPopup(content) {
         alert("Errore: " + e);
     }
 }
-
-function DoGraph(content) {
+var plot4;
+function DoGraph(content,first) {
     try {
 
         
@@ -675,24 +675,24 @@ function DoGraph(content) {
             innerVal = 350;
             OuterVal = 360;
         }
-        plot4 = $.jqplot('chart4', [s1], {
-            seriesDefaults: {
-                renderer: $.jqplot.MeterGaugeRenderer,
-                rendererOptions: {
-                    background: Backg,
-                    tickColor: '#000000',
-                    ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
-                    intervalOuterRadius: OuterVal,
-                    intervalInnerRadius: innerVal,
-                    min: 0,
-                    max: 100,
-                    intervals: [20, 50, 100],
-                    intervalColors: ['#cc6666', '#E7E658', '#66cc66']
-                }
-            }
-        });
-        //plot4.replot();
-        //plot4.redraw();
+		$('.jqPlot').remove();
+		$('#plotContainer').append('<div id=\"chart4\" class=\"Grafico jqPlot\" ></div>');
+		   plot4 = $.jqplot('chart4', [s1], {
+				seriesDefaults: {
+					renderer: $.jqplot.MeterGaugeRenderer,
+					rendererOptions: {
+						background: Backg,
+						tickColor: '#000000',
+						ticks: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+						intervalOuterRadius: OuterVal,
+						intervalInnerRadius: innerVal,
+						min: 0,
+						max: 100,
+						intervals: [20, 50, 100],
+						intervalColors: ['#cc6666', '#E7E658', '#66cc66']
+					}
+				}
+			});
 
     } catch (e) {
         alert("ErroreGraph: " + e);

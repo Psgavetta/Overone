@@ -11,10 +11,16 @@
         <style>.ui-dialog .ui-header .ui-btn-icon-notext { display:none;} </style>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
 
+		<link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/jquery.jqplot.css" />
+		 
+		
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script src="jquery.mobile-1.3.2/jquery-1.10.2.min.js"></script>
 		<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
-        
+		
+        <script type="text/javascript" src="jquery.mobile-1.3.2/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="jquery.mobile-1.3.2/plugins/jqplot.meterGaugeRenderer.min.js"></script>
+		
 		<script type="text/javascript" src="js/global.js"></script>
         <script type="text/javascript" src="js/macchine.js"></script>
         <style>
@@ -39,6 +45,8 @@
 
 
 		</script>
+		
+		
 		 <title>Macchine</title>	
     </head>
     <body>
@@ -136,9 +144,7 @@
 		 </div><!-- /page one -->
 
 	     <div data-role="page" id="Cruscotto">
-		 <link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/jquery.jqplot.css" />
-		 <script type="text/javascript" src="jquery.mobile-1.3.2/jquery.jqplot.min.js"></script>
-        <script type="text/javascript" src="jquery.mobile-1.3.2/plugins/jqplot.meterGaugeRenderer.min.js"></script>
+		 
 			<!-- start header -->
 			<div data-role="header" data-nobackbtn="true" data-position="fixed" class="HeadFootClass">
 				<h1 id="H1">DETTAGLIO MACCHINA</h1>
@@ -151,7 +157,7 @@
             <div data-role="footer" class="ui-bar HeadFootClass" data-position="fixed">
                 <div data-role="controlgroup" data-type="horizontal">
                     <a data-role="button" onclick="ShowLoadingOK();doRedirectLocale('macchine.html');" data-icon="back">Indietro</a>
-					<a data-role="button" onclick="ShowLoadingOK();GetServerDate('macchine_true');" data-icon="refresh">Refresh</a>
+					<a data-role="button" onclick="ShowLoadingOK();GetServerDate('macchine_false');" data-icon="refresh">Refresh</a>
                     <a data-role="button" onclick="ShowExitConfirm();" data-icon="delete">Esci</a>
                     <div id="Div3"></div>
                 </div>          
