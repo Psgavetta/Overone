@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		
 		<link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css" />
-        <link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/jquery.jqplot.css" />
+        
         <link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/themes/custom-theme.min.css" />
         <style>.ui-dialog .ui-header .ui-btn-icon-notext { display:none;} </style>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
@@ -14,15 +14,9 @@
 		<script type="text/javascript" src="phonegap.js"></script>
 		<script src="jquery.mobile-1.3.2/jquery-1.10.2.min.js"></script>
 		<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>
-        <script type="text/javascript" src="jquery.mobile-1.3.2/jquery.jqplot.min.js"></script>
-        <script type="text/javascript" src="jquery.mobile-1.3.2/plugins/jqplot.meterGaugeRenderer.min.js"></script>
+        
 		<script type="text/javascript" src="js/global.js"></script>
         <script type="text/javascript" src="js/macchine.js"></script>
-		<script type="text/javascript">
-			window.onerror = function(message, url, lineNumber) {
-				alert("Error: "+message+" in "+url+" at line "+lineNumber);
-			}
-		</script>
         <style>
             /* hardware acceleration for smoother transitions on WebKit browsers */
             .ui-panel-animate.ui-panel:not(.ui-panel-display-reveal),
@@ -142,6 +136,9 @@
 		 </div><!-- /page one -->
 
 	     <div data-role="page" id="Cruscotto">
+		 <link rel="stylesheet" type="text/css" href="jquery.mobile-1.3.2/jquery.jqplot.css" />
+		 <script type="text/javascript" src="jquery.mobile-1.3.2/jquery.jqplot.min.js"></script>
+        <script type="text/javascript" src="jquery.mobile-1.3.2/plugins/jqplot.meterGaugeRenderer.min.js"></script>
 			<!-- start header -->
 			<div data-role="header" data-nobackbtn="true" data-position="fixed" class="HeadFootClass">
 				<h1 id="H1">DETTAGLIO MACCHINA</h1>
