@@ -96,7 +96,7 @@ function doOnOrientationChange() {
         // Do something here if the popup is open
         // alert("ok");
 		
-		
+		ShowLoadingOK();
         //OpenPopup(StoreLocally_get('PopupView', false), true);
 		GetServerDate('macchine_false');
     }
